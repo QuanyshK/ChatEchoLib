@@ -32,13 +32,16 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 publishing {
     publications {
         create<MavenPublication>("release") {
             groupId = "com.github.quanyshk"
             artifactId = "chatecholib"
-            version = "0.0.0"
+            version = "1.0.0"
             afterEvaluate { from(components["release"]) }
         }
     }
@@ -47,6 +50,10 @@ repositories {
     maven {
         name = "GitHubPackages"
         url = uri("https://maven.pkg.github.com/quanyshk/chatecholib")
+        credentials {
+            username = project.findProperty("quanyshk") as String? ?: ""
+            password = project.findProperty("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") as String? ?: ""
+        }
     }
 }
 dependencies {
