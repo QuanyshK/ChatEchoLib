@@ -26,11 +26,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         viewBinding = true
@@ -39,20 +39,21 @@ android {
 publishing {
     publications {
         create<MavenPublication>("release") {
-            groupId = "com.github.quanyshk"
+            groupId = "com.github"
             artifactId = "chatecholib"
-            version = "1.0.0"
+            version = "1.0.4"
             afterEvaluate { from(components["release"]) }
         }
     }
-}
-repositories {
-    maven {
-        name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/quanyshk/chatecholib")
-        credentials {
-            username = project.findProperty("quanyshk") as String? ?: ""
-            password = project.findProperty("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") as String? ?: ""
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/QuanyshK/ChatEchoLib")
+            credentials {
+                username = project.findProperty("QuanyshK") as String? ?: ""
+                password = project.findProperty("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") as String? ?: ""
+            }
         }
     }
 }
